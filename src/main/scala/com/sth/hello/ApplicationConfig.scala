@@ -1,13 +1,9 @@
 package com.sth.hello
 
-import cats.data.Reader
+import org.zalando.grafter.macros.readers
 
-
+@readers
 case class ApplicationConfig(http: HttpConfig)
 
 
 case class HttpConfig(host: String, port: Int)
-
-object HttpConfig {
-  implicit def reader: Reader[ApplicationConfig, HttpConfig] = Reader(_.http)
-}

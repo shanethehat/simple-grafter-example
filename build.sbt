@@ -10,3 +10,5 @@ libraryDependencies ++= Seq(
   "org.http4s" %% "http4s-blaze-server" % "0.15.2",
   "org.zalando" %% "grafter" % "1.3.1"
 )
+
+addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full)
