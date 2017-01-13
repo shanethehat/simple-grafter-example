@@ -1,10 +1,10 @@
 package com.sth.hello
 
-import cats.data.Reader
 import org.http4s.HttpService
 import org.http4s.dsl._
-import org.zalando.grafter.GenericReader._
+import org.zalando.grafter.macros.reader
 
+@reader[ApplicationConfig]
 case class Routes(greetingService: GreetingService) {
 
   lazy val httpService = HttpService {
@@ -12,8 +12,4 @@ case class Routes(greetingService: GreetingService) {
     case GET -> Root / "bye" => Ok(greetingService.sayGoodbye)
   }
 
-}
-
-object Routes {
-  implicit def reader: Reader[ApplicationConfig, Routes] = genericReader
 }
